@@ -26,43 +26,43 @@ public class CurrentAccount extends BankAccount{
         }
 
     }
-    public String arrangeString(String S)
+    public String arrangeString(String s)
     {
-        int N = S.length();
+        int n = s.length();
 
-        int[] count = new int[26];
-        for (int i = 0; i < 26; i++) {
+        int[]count = new int[26];
+        for(int i=0;i<26;i++){
             count[i] = 0;
         }
-        for (char ch : S.toCharArray()) {
+        for(char ch: s.toCharArray()){
             count[(int)ch - (int)'A']++;
         }
 
         char ch_max = getCountChar(count);
         int maxCount = count[(int)ch_max - (int)'A'];
 
-        if (maxCount > (N + 1) / 2)
+        if(maxCount > (n+1)/2){
             return "";
-
+        }
         String res = "";
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             res += ' ';
         }
 
         int ind = 0;
-        while (maxCount > 0)
-        {
-            res = res.substring(0, ind) + ch_max + res.substring(ind + 1);
+        while (maxCount > 0) {
+            res = res.substring(0, ind) + ch_max
+                    + res.substring(ind + 1);
             ind = ind + 2;
             maxCount--;
         }
-        count[(int)ch_max - (int)'A'] = 0;
-        for (int i = 0; i < 26; i++)
-        {
-            while (count[i] > 0)
-            {
-                ind = (ind >= N) ? 1 : ind;
-                res = res.substring(0, ind) + (char)((int)'A' + i) + res.substring(ind + 1);
+        count[(int) ch_max - (int) 'A'] = 0;
+        for (int i = 0; i < 26; i++) {
+            while (count[i] > 0) {
+                ind = (ind >= n) ? 1 : ind;
+                res = res.substring(0, ind)
+                        + (char) ((int) 'A' + i)
+                        + res.substring(ind + 1);
                 ind += 2;
                 count[i]--;
             }
